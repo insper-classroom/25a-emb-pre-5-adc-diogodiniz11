@@ -9,7 +9,6 @@
 #include "data.h"
 QueueHandle_t xQueueData;
 
-int buffer[5] = {0};
 
 // não mexer! Alimenta a fila com os dados do sinal
 void data_task(void *p) {
@@ -28,6 +27,8 @@ void data_task(void *p) {
 void process_task(void *p) {
     int data = 0;
     int index = 0;
+    int buffer[5]; 
+
 
     while (true) {
         if (xQueueReceive(xQueueData, &data, 100)) {
